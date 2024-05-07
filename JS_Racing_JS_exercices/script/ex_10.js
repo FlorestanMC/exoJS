@@ -1,10 +1,12 @@
+// Au moment du load de la page on lance la fonction
 window.addEventListener('load', function(){
     
-    // Au moment du load de la page on lance la fonction
+    // On récupère la balise concernée
     var content = document.getElementsByTagName("footer")[0].lastElementChild
-    
+    // On récupère le nom et le bouton pour pouvoir agir dessus
     var input = document.getElementsByTagName("input")[0]
     var btn = document.getElementsByTagName("button")[0]
+    // fonction qui met un écouteur d'évnènement sur le bouton et qui récupère la value de l'input
     btn.addEventListener('click', function(){
         var code = input.value
         console.log(code)
@@ -15,7 +17,7 @@ window.addEventListener('load', function(){
 
     console.log(url)
     // fonction fetch pour récupérer les données voulues
-    const fetchschool = () => {
+    const fetchcity = () => {
         fetch(url)
             .then((response) => {
                 if (!response.ok) {
@@ -29,7 +31,7 @@ window.addEventListener('load', function(){
                    
                    results = data[0]
                    console.log(results)
-                    var infocommune = ""; // Variable pour stocker le HTML des établissements
+                    var infocommune = ""; // Variable pour stocker le HTML de la ville
                     
                         infocommune += "<tr> <th scope='row'>" + results.nomCommune + "</th> <td>" + results.libelleAcheminement + "</td> </tr>" ;
                  
@@ -42,7 +44,7 @@ window.addEventListener('load', function(){
                 console.error("Error fetching school details:", error);
             });
     };
-    fetchschool();
+    fetchcity();
     }) 
     
     
