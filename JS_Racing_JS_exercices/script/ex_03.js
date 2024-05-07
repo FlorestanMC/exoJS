@@ -5,7 +5,7 @@ window.addEventListener('load' ,function(){
         person = ""
 
         
-      ask()
+      
         function ask () {
           // Prompt me permet d'ouvrir une box pour demander le nom
           let person = prompt("Please enter your name:", );
@@ -27,6 +27,7 @@ window.addEventListener('load' ,function(){
       
         }
   
+        ask()
         
     
 })  

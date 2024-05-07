@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <script>
+        function dragstart_handler(ev) {
+          // On ajoute l'identifiant de l'élément cible à l'objet de transfert
+          ev.dataTransfer.setData("application/my-app", ev.target.id);
+          ev.dataTransfer.dropEffect = "move";
+        }
+        function dragover_handler(ev) {
+          ev.preventDefault();
+          ev.dataTransfer.dropEffect = "move";
+        }
+        function drop_handler(ev) {
+          ev.preventDefault();
+          // On obtient l'identifiant de la cible et on ajoute l'élément déplacé
+          // au DOM de la cible
+          var data = ev.dataTransfer.getData("application/my-app");
+          ev.target.appendChild(document.getElementById(data));
+        }
+      </script>
+      
+      <div id="p1" draggable="true" ondragstart="dragstart_handler(event)">
+        Cet élément peut être déplacé.
+      </div>
+      <canvas
+        id="target"
+        ondrop="drop_handler(event)"
+        ondragover="dragover_handler(event)">
+        Zone pour le dépôt
+      </canvas>
+</body>
+</html>
+
+
+  
